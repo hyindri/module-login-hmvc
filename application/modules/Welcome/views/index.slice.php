@@ -18,9 +18,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="card shadow mb-4">
-                    <div class="card-header py-3">
-                        <button class="btn btn-primary" id="tambah-data" type="button" data-toggle="modal"
-                            data-target="#tambahModal">Tambah Data</button>                        
+                    <div class="card-header py-3">                    
                         <a href="{{site_url('auth')}}" class="btn btn-danger" style="float: right;">Login</a>                    
                     </div>
                     <div class="card-body">

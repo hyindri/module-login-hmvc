@@ -48,7 +48,7 @@ class Auth extends CI_Controller
 
                 );
             $this->session->set_userdata($sesi);
-            redirect(site_url('admin'));
+            redirect(site_url('admin'),'refresh');
             }            
             else
             {
@@ -60,5 +60,20 @@ class Auth extends CI_Controller
             view('index');
         }
         
+    }
+
+    function logout()
+    {
+        $sesi_selesai = array(
+            'full_name' => 'full_name',
+            'username' => 'username',
+            'email' => 'email',
+            'phone' => 'phone',
+            'password' => 'password',
+            'login_status' => 'login_status'
+        );
+
+        $this->session->unset_userdata($sesi_selesai);
+        redirect(site_url('welcome'),'refresh');
     }
 }
