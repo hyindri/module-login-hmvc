@@ -34,7 +34,7 @@ class Admin extends CI_Controller
 			$sub_array[]	= $row->nama;
 			$sub_array[] 	= $row->jurusan;
 			$sub_array[]	= $row->fakultas;	
-            $sub_array[]    = '<button type="button" class="btn btn-info btn-sm mb-2">Ubah</button> <br> <button type="button" class="btn btn-danger btn-sm">Hapus</button>';
+            $sub_array[]    = '<button type="button" class="btn btn-info btn-sm mb-2" data-id="'.$row->id_mahasiswa.'" id="get-ubahModal">Ubah</button> <br> <button type="button" class="btn btn-danger btn-sm" id="get-hapusModal" data-id="'.$row->id_mahasiswa.'">Hapus</button>';
             $data[]         = $sub_array;
         }
 
@@ -46,4 +46,38 @@ class Admin extends CI_Controller
 		);
         echo json_encode($output);
     }
+
+    function tambah_data()
+	{
+        $data = $this->Model_admin->tambahData();        
+		echo json_encode(array($data));
+    }
+
+    
+	function ambil_satu_data()
+	{
+		$output = array();
+		$data = $this->Model_admin->ambilSatuData($this->input->post('id_mahasiswa'));
+		foreach($data as $row)
+		{
+			$output['id'] = $row->id_mahasiswa;
+			$output['nim'] = $row->nim;
+			$output['nama'] = $row->nama;
+			$output['jurusan'] = $row->jurusan;
+			$output['fakultas'] = $row->fakultas;
+		}
+		echo json_encode($output);	
+    }
+
+    function ubah_data()
+	{
+        $data = $this->Model_admin->ubahData();        
+		echo json_encode($data);
+    }
+
+    function hapus_data()
+	{
+		$data = $this->Model_admin->hapusData();
+		json_encode($data);
+	}
 }

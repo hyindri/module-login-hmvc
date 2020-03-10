@@ -43,39 +43,5 @@ class Welcome extends CI_Controller {
 			"data" => $data
 		);
 		echo json_encode($output);
-	}
-
-	function tambah_data()
-	{
-		$data = $this->welcome_model->tambahData();
-		json_encode($data);
-	}
-
-	function ambil_satu_data()
-	{
-		$output = array();
-		$data = $this->welcome_model->ambilSatuData($this->input->post('id_mahasiswa'));
-		foreach($data as $row)
-		{
-			$output['id'] = $row->id_mahasiswa;
-			$output['nim'] = $row->nim;
-			$output['nama'] = $row->nama;
-			$output['jurusan'] = $row->jurusan;
-			$output['fakultas'] = $row->fakultas;
-		}
-		echo json_encode($output);
-	}
-
-	function ubah_data()
-	{
-		$data = $this->welcome_model->ubahData();
-		json_encode($data);
-	}
-
-	function hapus_data()
-	{
-		$data = $this->welcome_model->hapusData();
-		json_encode($data);
-	}
-
+	}	
 }

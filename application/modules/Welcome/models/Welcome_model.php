@@ -56,47 +56,6 @@ class Welcome_model extends CI_Model
         return $this->db->count_all_results();
     }
 
-    	
-	function tambahData()
-	{
-		$data = array(
-            'id_mahasiswa' => uniqid(),
-			'nim' => $this->input->post('nim'),
-			'nama' => $this->input->post('nama'),
-            'jurusan' => $this->input->post('jurusan'),
-            'fakultas' => $this->input->post('fakultas')
-        );
-        $this->db->where('nim' ,$data['nim']);
-        $query = $this->db->get($this->table);
-        if($query->num_rows() > 0){
-            return $this->db->insert('');
-        }else{
-            return $this->db->insert($this->table, $data);
-        }
-    }
-    
-    function ambilSatuData($id_mahasiswa)
-    {
-        $this->db->where('id_mahasiswa',$id_mahasiswa);
-        return $this->db->get($this->table)->result();
-    }
 
-    function ubahData()
-    {
-        $id_mahasiswa['id_mahasiswa'] = $this->input->post('id_mahasiswa');
-        $data = array(            
-			'nim' => $this->input->post('nim'),
-			'nama' => $this->input->post('nama'),
-            'jurusan' => $this->input->post('jurusan'),
-            'fakultas' => $this->input->post('fakultas')
-        );
-        return $this->db->update($this->table,$data,$id_mahasiswa);
-    }
-
-    function hapusData()
-    {
-        $id['id_mahasiswa'] = $this->input->post('id_mahasiswa');
-        return $this->db->delete($this->table,$id);
-    }
 
 }
