@@ -16,7 +16,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Set the file extension for the slice template
 |
 */
-$config['slice_ext'] = '.slice.php';
+$config['slice_ext'] = '.php';
 
 /*
 |--------------------------------------------------------------------------
